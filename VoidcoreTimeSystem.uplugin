@@ -1,0 +1,24 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0.0",
+	"FriendlyName": "VoidcoreTimeSystem",
+	"Description": "A comprehensive time system with clock, calendar, schedule, time progression and related events.",
+	"Category": "Utilities",
+	"CreatedBy": "Ankit Bansal Dev",
+	"CreatedByURL": "https://www.fab.com/sellers/Ankit%20Bansal%20Dev",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": false,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "VoidcoreTimeSystem",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}
