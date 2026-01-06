@@ -3,6 +3,8 @@
 
 #include "Library/VCalendarLibrary.h"
 #include "Data/VCalendarDate.h"
+#include "Data/VCalendarDefinition.h"
+#include "Data/LeapYearRule.h"
 
 bool UVCalendarLibrary::EqualEqual_CalendarDate(const FCalendarDate& A, const FCalendarDate& B)
 {
@@ -57,4 +59,43 @@ FCalendarDate UVCalendarLibrary::Max_CalendarDate(const FCalendarDate& A, const 
 FCalendarDate UVCalendarLibrary::MakeCalendarDate(int32 Year, int32 DayOfYear)
 {
     return FCalendarDate(Year, DayOfYear);
+}
+
+bool UVCalendarLibrary::IsLeapYear(int32 Year, const UVCalendarDefinition* CalendarDefinition)
+{
+    if (!CalendarDefinition)
+    {
+        return false;
+    }
+
+    if (!CalendarDefinition->LeapYear.bLeapYearSupported)
+    {
+        return false;
+    }
+
+    const TSubclassOf<ULeapYearRule> RuleClass = CalendarDefinition->LeapYear.LeapYearRule;
+
+    if (!RuleClass)
+    {
+        return false;
+    }
+
+    if (RuleClass->HasAnyClassFlags(CLASS_Abstract))
+    {
+        return false;
+    }
+
+    if (!RuleClass->IsChildOf(ULeapYearRule::StaticClass()))
+    {
+        return false;
+    }
+
+    const ULeapYearRule* RuleCDO = RuleClass->GetDefaultObject<ULeapYearRule>();
+
+    if (!RuleCDO)
+    {
+        return false;
+    }
+
+    return RuleCDO->IsLeapYear(Year);
 }

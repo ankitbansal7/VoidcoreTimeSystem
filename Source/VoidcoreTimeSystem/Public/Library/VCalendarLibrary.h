@@ -6,6 +6,8 @@
 #include "Kismet/BlueprintFunctionLibrary.h"
 #include "VCalendarLibrary.generated.h"
 
+class UVCalendarDefinition;
+
 struct FCalendarDate;
 
 UCLASS(meta = (DisplayName = "Voidcore Calendar Library"))
@@ -62,4 +64,9 @@ public:
 
     UFUNCTION(BlueprintCallable, Category = "Voidcore|Time|Calendar")
     static FCalendarDate MakeCalendarDate(int32 Year, int32 DayOfYear);
+
+    // Leap Year
+
+    UFUNCTION(BlueprintCallable, Category = "Voidcore|Time|Calendar")
+    static bool IsLeapYear(int32 Year, const UVCalendarDefinition* CalendarDefinition);
 };

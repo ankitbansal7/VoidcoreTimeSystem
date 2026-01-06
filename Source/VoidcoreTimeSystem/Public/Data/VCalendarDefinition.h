@@ -6,6 +6,8 @@
 #include "Engine/DataAsset.h"
 #include "VCalendarDefinition.generated.h"
 
+class ULeapYearRule;
+
 /**
  * How a season is defined over the year.
  * - MonthRange: season covers whole months (most common in games)
@@ -110,23 +112,8 @@ public:
 
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Calendar|LeapYear",
         meta = (EditCondition = "bLeapYearSupported", EditConditionHides))
-    ELeapYearRule LeapYearRule{ ELeapYearRule::Gregorian };
-
-    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Calendar|LeapYear",
-        meta = (ClampMin = "1", UIMin = "1", EditCondition = "(bLeapYearSupported && (LeapYearRule == ELeapYearRule::EveryXYears))", EditConditionHides))
-    int32 LeapYearInterval{ 4 };
-
-    // Leap if: (Year - LeapYearOffset) % LeapYearInterval == 0
-    // Example: Interval=5, Offset=3 -> leap years: 3, 8, 13, ...
-    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Calendar|LeapYear",
-        meta = (ClampMin = "0", UIMin = "0", EditCondition = "(bLeapYearSupported && (LeapYearRule == ELeapYearRule::EveryXYears))", EditConditionHides))
-    int32 LeapYearOffset{ 0 };
-
-    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Calendar|LeapYear",
-        meta = (EditCondition = "(bLeapYearSupported && (LeapYearRule == ELeapYearRule::Custom))", EditConditionHides))
-    FName CustomRuleId{ NAME_None };
+    TSubclassOf<ULeapYearRule> LeapYearRule{ nullptr };
 };
-
 
 /**
  * Defines a "season" as a named overlay classification on top of a calendar year.
