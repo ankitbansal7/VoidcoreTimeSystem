@@ -8,7 +8,7 @@
 
 class UVCalendarDefinition;
 
-struct FCalendarDate;
+struct FVCalendarDate;
 
 UCLASS(meta = (DisplayName = "Voidcore Calendar Library"))
 class VOIDCORETIMESYSTEM_API UVCalendarLibrary : public UBlueprintFunctionLibrary
@@ -21,49 +21,49 @@ public:
     /** Returns true if A is equal to B (A == B) */
     UFUNCTION(BlueprintPure, Category = "Voidcore|Time|Calendar",
         meta = (DisplayName = "Equal (CalendarDate)", CompactNodeTitle = "==", Keywords = "== equal", ScriptMethod = "Equals", ScriptOperator = "=="))
-    static bool EqualEqual_CalendarDate(const FCalendarDate& A, const FCalendarDate& B);
+    static bool EqualEqual_CalendarDate(const FVCalendarDate& A, const FVCalendarDate& B);
 
     /** Returns true if A is not equal to B (A != B) */
     UFUNCTION(BlueprintPure, Category = "Voidcore|Time|Calendar",
         meta = (DisplayName = "Not Equal (CalendarDate)", CompactNodeTitle = "!=", Keywords = "!= not equal", ScriptMethod = "NotEqual", ScriptOperator = "!="))
-    static bool NotEqual_CalendarDate(const FCalendarDate& A, const FCalendarDate& B);
+    static bool NotEqual_CalendarDate(const FVCalendarDate& A, const FVCalendarDate& B);
 
     /** Returns true if A is less than B (A < B) */
     UFUNCTION(BlueprintPure, Category = "Voidcore|Time|Calendar",
         meta = (DisplayName = "Less (CalendarDate)", CompactNodeTitle = "<", Keywords = "< less before earlier", ScriptOperator = "<"))
-    static bool Less_CalendarDate(const FCalendarDate& A, const FCalendarDate& B);
+    static bool Less_CalendarDate(const FVCalendarDate& A, const FVCalendarDate& B);
 
     /** Returns true if A is less than or equal to B (A <= B) */
     UFUNCTION(BlueprintPure, Category = "Voidcore|Time|Calendar",
         meta = (DisplayName = "Less Equal (CalendarDate)", CompactNodeTitle = "<=", Keywords = "<= less equal before", ScriptOperator = "<="))
-    static bool LessEqual_CalendarDate(const FCalendarDate& A, const FCalendarDate& B);
+    static bool LessEqual_CalendarDate(const FVCalendarDate& A, const FVCalendarDate& B);
 
     /** Returns true if A is greater than B (A > B) */
     UFUNCTION(BlueprintPure, Category = "Voidcore|Time|Calendar",
         meta = (DisplayName = "Greater (CalendarDate)", CompactNodeTitle = ">", Keywords = "> greater after later", ScriptOperator = ">"))
-    static bool Greater_CalendarDate(const FCalendarDate& A, const FCalendarDate& B);
+    static bool Greater_CalendarDate(const FVCalendarDate& A, const FVCalendarDate& B);
 
     /** Returns true if A is greater than or equal to B (A >= B) */
     UFUNCTION(BlueprintPure, Category = "Voidcore|Time|Calendar",
         meta = (DisplayName = "Greater Equal (CalendarDate)", CompactNodeTitle = ">=", Keywords = ">= greater equal after", ScriptOperator = ">="))
-    static bool GreaterEqual_CalendarDate(const FCalendarDate& A, const FCalendarDate& B);
+    static bool GreaterEqual_CalendarDate(const FVCalendarDate& A, const FVCalendarDate& B);
 
     UFUNCTION(BlueprintPure, Category = "Voidcore|Time|Calendar",
         meta = (DisplayName = "Compare (CalendarDate)", Keywords = "compare sort"))
-    static int32 Compare_CalendarDate(const FCalendarDate& A, const FCalendarDate& B);
+    static int32 Compare_CalendarDate(const FVCalendarDate& A, const FVCalendarDate& B);
 
     UFUNCTION(BlueprintPure, Category = "Voidcore|Time|Calendar",
         meta = (DisplayName = "Min (CalendarDate)", Keywords = "min earliest"))
-    static FCalendarDate Min_CalendarDate(const FCalendarDate& A, const FCalendarDate& B);
+    static FVCalendarDate Min_CalendarDate(const FVCalendarDate& A, const FVCalendarDate& B);
 
     UFUNCTION(BlueprintPure, Category = "Voidcore|Time|Calendar",
         meta = (DisplayName = "Max (CalendarDate)", Keywords = "max latest"))
-    static FCalendarDate Max_CalendarDate(const FCalendarDate& A, const FCalendarDate& B);
+    static FVCalendarDate Max_CalendarDate(const FVCalendarDate& A, const FVCalendarDate& B);
 
     // Calendar Factory
 
     UFUNCTION(BlueprintCallable, Category = "Voidcore|Time|Calendar")
-    static FCalendarDate MakeCalendarDate(int32 Year, int32 DayOfYear);
+    static FVCalendarDate MakeCalendarDate(int32 Year, int32 DayOfYear);
 
     // Leap Year
 

@@ -4,10 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "UObject/Object.h"
-#include "LeapYearRule.generated.h"
+#include "VLeapYearRuleBase.generated.h"
 
-UCLASS(Abstract, Blueprintable, BlueprintType)
-class VOIDCORETIMESYSTEM_API ULeapYearRule : public UObject
+UCLASS(Abstract, Blueprintable, BlueprintType, meta = (DisplayName = "Leap Year Rule Base"))
+class VOIDCORETIMESYSTEM_API UVLeapYearRuleBase : public UObject
 {
     GENERATED_BODY()
 

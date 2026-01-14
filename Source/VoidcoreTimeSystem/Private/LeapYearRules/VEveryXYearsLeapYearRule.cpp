@@ -1,14 +1,14 @@
 // Copyright (c) 2025 Ankit Bansal. All rights reserved.
 
 
-#include "Data/EveryXYearsLeapYearRule.h"
+#include "LeapYearRules/VEveryXYearsLeapYearRule.h"
 
-UEveryXYearsLeapYearRule::UEveryXYearsLeapYearRule()
+UVEveryXYearsLeapYearRule::UVEveryXYearsLeapYearRule()
 {
     RuleID = TEXT("EveryXYears");
 }
 
-bool UEveryXYearsLeapYearRule::IsLeapYear_Implementation(int32 Year) const
+bool UVEveryXYearsLeapYearRule::IsLeapYear_Implementation(int32 Year) const
 {
     if (Year <= 0)
     {

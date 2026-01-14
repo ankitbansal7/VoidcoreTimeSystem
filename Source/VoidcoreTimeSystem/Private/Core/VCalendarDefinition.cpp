@@ -1,7 +1,7 @@
 // Copyright (c) 2025 Ankit Bansal. All rights reserved.
 
 
-#include "Data/VCalendarDefinition.h"
+#include "Core/VCalendarDefinition.h"
 
 #include "Misc/DataValidation.h"
 
@@ -33,7 +33,7 @@ EDataValidationResult UVCalendarDefinition::IsDataValid(FDataValidationContext& 
     {
         bool bAnyLeapMonth = false;
 
-        for (const FMonthDefinition& Month : Months)
+        for (const FVMonthDefinition& Month : Months)
         {
             if (Month.bCanLeap)
             {

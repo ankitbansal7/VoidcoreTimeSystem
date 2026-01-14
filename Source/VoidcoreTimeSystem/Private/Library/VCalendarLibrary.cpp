@@ -2,41 +2,41 @@
 
 
 #include "Library/VCalendarLibrary.h"
-#include "Data/VCalendarDate.h"
-#include "Data/VCalendarDefinition.h"
-#include "Data/LeapYearRule.h"
+#include "Core/VCalendarDate.h"
+#include "Core/VCalendarDefinition.h"
+#include "Core/VLeapYearRuleBase.h"
 
-bool UVCalendarLibrary::EqualEqual_CalendarDate(const FCalendarDate& A, const FCalendarDate& B)
+bool UVCalendarLibrary::EqualEqual_CalendarDate(const FVCalendarDate& A, const FVCalendarDate& B)
 {
     return (A == B);
 }
 
-bool UVCalendarLibrary::NotEqual_CalendarDate(const FCalendarDate& A, const FCalendarDate& B)
+bool UVCalendarLibrary::NotEqual_CalendarDate(const FVCalendarDate& A, const FVCalendarDate& B)
 {
     return (A != B);
 }
 
-bool UVCalendarLibrary::Less_CalendarDate(const FCalendarDate& A, const FCalendarDate& B)
+bool UVCalendarLibrary::Less_CalendarDate(const FVCalendarDate& A, const FVCalendarDate& B)
 {
     return (A < B);
 }
 
-bool UVCalendarLibrary::LessEqual_CalendarDate(const FCalendarDate& A, const FCalendarDate& B)
+bool UVCalendarLibrary::LessEqual_CalendarDate(const FVCalendarDate& A, const FVCalendarDate& B)
 {
     return (A <= B);
 }
 
-bool UVCalendarLibrary::Greater_CalendarDate(const FCalendarDate& A, const FCalendarDate& B)
+bool UVCalendarLibrary::Greater_CalendarDate(const FVCalendarDate& A, const FVCalendarDate& B)
 {
     return (A > B);
 }
 
-bool UVCalendarLibrary::GreaterEqual_CalendarDate(const FCalendarDate& A, const FCalendarDate& B)
+bool UVCalendarLibrary::GreaterEqual_CalendarDate(const FVCalendarDate& A, const FVCalendarDate& B)
 {
     return (A >= B);
 }
 
-int32 UVCalendarLibrary::Compare_CalendarDate(const FCalendarDate& A, const FCalendarDate& B)
+int32 UVCalendarLibrary::Compare_CalendarDate(const FVCalendarDate& A, const FVCalendarDate& B)
 {
     if (EqualEqual_CalendarDate(A, B))
     {
@@ -46,19 +46,19 @@ int32 UVCalendarLibrary::Compare_CalendarDate(const FCalendarDate& A, const FCal
     return (Less_CalendarDate(A, B) ? -1 : 1);
 }
 
-FCalendarDate UVCalendarLibrary::Min_CalendarDate(const FCalendarDate& A, const FCalendarDate& B)
+FVCalendarDate UVCalendarLibrary::Min_CalendarDate(const FVCalendarDate& A, const FVCalendarDate& B)
 {
     return Less_CalendarDate(A, B) ? A : B;
 }
 
-FCalendarDate UVCalendarLibrary::Max_CalendarDate(const FCalendarDate& A, const FCalendarDate& B)
+FVCalendarDate UVCalendarLibrary::Max_CalendarDate(const FVCalendarDate& A, const FVCalendarDate& B)
 {
     return Less_CalendarDate(A, B) ? B : A;
 }
 
-FCalendarDate UVCalendarLibrary::MakeCalendarDate(int32 Year, int32 DayOfYear)
+FVCalendarDate UVCalendarLibrary::MakeCalendarDate(int32 Year, int32 DayOfYear)
 {
-    return FCalendarDate(Year, DayOfYear);
+    return FVCalendarDate(Year, DayOfYear);
 }
 
 bool UVCalendarLibrary::IsLeapYear(int32 Year, const UVCalendarDefinition* CalendarDefinition)
@@ -73,7 +73,7 @@ bool UVCalendarLibrary::IsLeapYear(int32 Year, const UVCalendarDefinition* Calen
         return false;
     }
 
-    const TSubclassOf<ULeapYearRule> RuleClass = CalendarDefinition->LeapYear.LeapYearRule;
+    const TSubclassOf<UVLeapYearRuleBase> RuleClass = CalendarDefinition->LeapYear.LeapYearRule;
 
     if (!RuleClass)
     {
@@ -85,12 +85,12 @@ bool UVCalendarLibrary::IsLeapYear(int32 Year, const UVCalendarDefinition* Calen
         return false;
     }
 
-    if (!RuleClass->IsChildOf(ULeapYearRule::StaticClass()))
+    if (!RuleClass->IsChildOf(UVLeapYearRuleBase::StaticClass()))
     {
         return false;
     }
 
-    const ULeapYearRule* RuleCDO = RuleClass->GetDefaultObject<ULeapYearRule>();
+    const UVLeapYearRuleBase* RuleCDO = RuleClass->GetDefaultObject<UVLeapYearRuleBase>();
 
     if (!RuleCDO)
     {

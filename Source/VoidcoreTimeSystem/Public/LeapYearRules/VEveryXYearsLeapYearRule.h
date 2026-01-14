@@ -3,16 +3,16 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Data/LeapYearRule.h"
-#include "EveryXYearsLeapYearRule.generated.h"
+#include "Core/VLeapYearRuleBase.h"
+#include "VEveryXYearsLeapYearRule.generated.h"
 
-UCLASS(Blueprintable, BlueprintType)
-class VOIDCORETIMESYSTEM_API UEveryXYearsLeapYearRule : public ULeapYearRule
+UCLASS(Blueprintable, BlueprintType, meta = (DisplayName = " Every X Years Leap Year Rule"))
+class VOIDCORETIMESYSTEM_API UVEveryXYearsLeapYearRule : public UVLeapYearRuleBase
 {
     GENERATED_BODY()
 
 public:
-    UEveryXYearsLeapYearRule();
+    UVEveryXYearsLeapYearRule();
     virtual bool IsLeapYear_Implementation(int32 Year) const override;
 
     FORCEINLINE int32 GetInterval() const { return Interval; }

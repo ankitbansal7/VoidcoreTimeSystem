@@ -1,14 +1,14 @@
 // Copyright (c) 2025 Ankit Bansal. All rights reserved.
 
 
-#include "Data/GregorianLeapYearRule.h"
+#include "LeapYearRules/VGregorianLeapYearRule.h"
 
-UGregorianLeapYearRule::UGregorianLeapYearRule() 
+UVGregorianLeapYearRule::UVGregorianLeapYearRule() 
 {
     RuleID = TEXT("Gregorian");
 }
 
-bool UGregorianLeapYearRule::IsLeapYear_Implementation(int32 Year) const
+bool UVGregorianLeapYearRule::IsLeapYear_Implementation(int32 Year) const
 {
     if (Year <= 0)
     {
