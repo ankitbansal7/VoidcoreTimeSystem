@@ -12,7 +12,7 @@ struct FVClockTime
 
 public:
     FVClockTime() = default;
-    FVClockTime(int64 SecondsElapsed);
+    explicit FVClockTime(int64 SecondsElapsed);
 
     bool operator==(const FVClockTime& Other) const;
     bool operator!=(const FVClockTime& Other) const;

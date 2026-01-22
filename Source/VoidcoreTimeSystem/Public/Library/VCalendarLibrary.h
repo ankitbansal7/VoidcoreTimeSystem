@@ -16,6 +16,16 @@ class VOIDCORETIMESYSTEM_API UVCalendarLibrary : public UBlueprintFunctionLibrar
     GENERATED_BODY()
 
 public:
+    // Calendar Factory
+
+    UFUNCTION(BlueprintCallable, Category = "Voidcore|Time|Calendar")
+    static FVCalendarDate MakeCalendarDate(int32 Year, int32 DayOfYear);
+
+    // Calendar Basics
+
+    UFUNCTION(BlueprintCallable, Category = "Voidcore|Time|Calendar")
+    static bool IsLeapYear(int32 Year, const UVCalendarDefinition* CalendarDefinition);
+
     // Calendar Maths
 
     /** Returns true if A is equal to B (A == B) */
@@ -59,14 +69,4 @@ public:
     UFUNCTION(BlueprintPure, Category = "Voidcore|Time|Calendar",
         meta = (DisplayName = "Max (CalendarDate)", Keywords = "max latest"))
     static FVCalendarDate Max_CalendarDate(const FVCalendarDate& A, const FVCalendarDate& B);
-
-    // Calendar Factory
-
-    UFUNCTION(BlueprintCallable, Category = "Voidcore|Time|Calendar")
-    static FVCalendarDate MakeCalendarDate(int32 Year, int32 DayOfYear);
-
-    // Leap Year
-
-    UFUNCTION(BlueprintCallable, Category = "Voidcore|Time|Calendar")
-    static bool IsLeapYear(int32 Year, const UVCalendarDefinition* CalendarDefinition);
 };
